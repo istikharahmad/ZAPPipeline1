@@ -9,9 +9,13 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
+variables:
+ buildConfiguration: 'Release'
+
 steps:
 - script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- script: dotnet build --Configuration $(buildConfiguration)
+  displayName: 'donnet build $(buildConfiguration)'
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
